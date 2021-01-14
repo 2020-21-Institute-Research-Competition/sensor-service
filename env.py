@@ -4,6 +4,8 @@ import time
 import json
 import requests
 
+from config import post
+
 
 class Environment:
     def __init__(self):
@@ -45,10 +47,7 @@ class UpdateEnv:
         try:
             while True:
                 environment = Environment()
-                dht_payload = json.dumps({'temperature': environment.env['temperature'], 'humidity': environment.env['humidity']})
-                headers = {'Content-Type': 'application/json'}
-                res = requests.post('http://192.168.180.109:8080/api/v1/8vB6QolrAJbsHvPuMPGz/telemetry', headers=headers, data=dht_payload)
-                soil_moisture_payload = json.dumps({'percentage': environment.env['soil_moisture']})
-                res = requests.post('http://192.168.180.109:8080/api/v1/KtMNWOUG9s6QZZqnu64W/telemetry', headers=headers, data=soil_moisture_payload)
+                post('8vB6QolrAJbsHvPuMPGz', {'temperature': environment.env['temperature'], 'humidity': environment.env['humidity']})
+                post('KtMNWOUG9s6QZZqnu64W', {'percentage': environment.env['soil_moisture']})
         except KeyboardInterrupt:
             return

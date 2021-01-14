@@ -21,7 +21,7 @@ class WaterPump:
     def __init__(self):
         super().__init__()
         self.__water_pump = WaterPumpModel()
-        self.__THINGSBOARD_HOST = '192.168.180.109'
+        self.__THINGSBOARD_HOST = '192.168.43.142'
         self.__ACCESS_TOKEN = 'IacVgscRF2vHnhSJqXBA'
         self.__client = mqtt.Client()
 
