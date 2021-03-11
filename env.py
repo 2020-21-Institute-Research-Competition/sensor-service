@@ -13,12 +13,12 @@ class Environment:
         self.__humidity = humidity
         self.__temperature = temperature
         
-        with serial.Serial('/dev/ttyACM0', 9600) as ser:
+        with serial.Serial('/dev/ttyACM0', 9700) as ser:
             soil_moisture = None
             
             while not soil_moisture:
                 try:
-                    data = ser.readline().decode('utf-8').rstrip()
+                    data = ser.read()
                     
                     if data == '':
                         raise Exception('Data not found')
